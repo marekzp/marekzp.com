@@ -34,8 +34,8 @@ Success criteria, in order:
 
 ### `/` — the hub (single page, most important)
 Sections, top to bottom:
-1. **Intro**: Name (H1: "Marek Zaremba-Pike"), title line: "Head of Backend at
-   Photoroom". One-paragraph bio (placeholder below, Marek will edit):
+1. **Intro**: Name (H1: "Marek Zaremba-Pike"), title line: "Staff Engineer,
+   Head of Backend at Photoroom" (matches LinkedIn). One-paragraph bio (placeholder below, Marek will edit):
    > I lead the backend platform at Photoroom — Django and FastAPI serving 2,500+
    > requests per second — and build production AI systems: LLM gateways with
    > fallbacks, rate limiting and abuse prevention, and agentic coding pipelines
@@ -82,7 +82,8 @@ keep it honest and short, no filler).
 ## SEO requirements (non-negotiable)
 
 - **JSON-LD `Person` schema** on `/`:
-  `name`, `alternateName: "marekzp"`, `jobTitle: "Head of Backend"`,
+  `name`, `alternateName: "marekzp"`,
+  `jobTitle: "Staff Engineer, Head of Backend"`,
   `worksFor: {Organization: Photoroom}`, `url: https://marekzp.com`,
   `alumniOf: {CollegeOrUniversity: University of Bath}`,
   `memberOf: {Organization: BCS, The Chartered Institute for IT}`,
