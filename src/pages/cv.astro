@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+import { cv } from '../cv';
+---
+
+<Base
+  title={`CV — ${site.name}`}
+  description={`CV of ${site.name}: ${site.jobTitle} at ${site.employer.name}. ${cv.updated} edition, also available as a PDF.`}
+>
+  <article class="cv">
+    <header>
+      <h1>Curriculum vitae</h1>
+      <p class="meta">
+        {site.name}, MBCS · {cv.headline} · updated {cv.updated} ·
+        <a href="/cv.pdf">download as PDF</a>
+      </p>
+    </header>
+
+    <p class="summary">{cv.summary}</p>
+
+    <section aria-labelledby="cv-tech">
+      <h2 id="cv-tech">Technologies</h2>
+      <ul class="tech">
+        {cv.technologies.map((tech) => <li>{tech}</li>)}
+      </ul>
+    </section>
+
+    <section aria-labelledby="cv-experience">
+      <h2 id="cv-experience">Recent work experience</h2>
+      {
+        cv.experience.map((job) => (
+          <div class="entry">
+            <p class="meta">{job.period}</p>
+            <h3>
+              {job.role} — {job.company} <span class="sector">({job.sector})</span>
+            </h3>
+            <ul>
+              {job.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section aria-labelledby="cv-projects">
+      <h2 id="cv-projects">Personal projects</h2>
+      {
+        cv.projects.map((project) => (
+          <div class="entry">
+            <p class="meta">{project.period}</p>
+            <h3>{project.name}</h3>
+            <ul>
+              {project.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section aria-labelledby="cv-education">
+      <h2 id="cv-education">Education</h2>
+      <ul class="education">
+        {
+          cv.education.map((entry) => (
+            <li>
+              <span class="meta">{entry.period}</span>
+              <span>
+                {entry.course}, {entry.institution}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="cv-languages">
+      <h2 id="cv-languages">Languages</h2>
+      <p>{cv.languages}</p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  header {
+    margin-block-end: var(--space-l);
+  }
+
+  header .meta {
+    margin-block-start: var(--space-xs);
+  }
+
+  .summary {
+    margin-block-end: var(--space-l);
+  }
+
+  h2 {
+    margin-block: var(--space-xl) var(--space-m);
+  }
+
+  h3 {
+    margin-block-end: var(--space-xs);
+  }
+
+  .sector {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .entry {
+    margin-block-end: var(--space-l);
+  }
+
+  .entry ul {
+    padding-inline-start: 1.2em;
+    max-width: 70ch;
+  }
+
+  .entry li + li {
+    margin-block-start: var(--space-2xs);
+  }
+
+  .tech {
+    padding-inline-start: 1.2em;
+    max-width: 70ch;
+  }
+
+  .education {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .education li {
+    display: grid;
+    grid-template-columns: 10.5rem 1fr;
+    gap: var(--space-s);
+  }
+
+  .education .meta {
+    padding-block-start: 0.2em;
+  }
+
+  @media (max-width: 480px) {
+    .education li {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+
+  @media print {
+    .cv {
+      font-size: 11pt;
+    }
+
+    h2 {
+      margin-block: 1.2em 0.5em;
+    }
+
+    .entry {
+      break-inside: avoid;
+    }
+
+    header .meta a {
+      display: none;
+    }
+  }
+</style>

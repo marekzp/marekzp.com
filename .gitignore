@@ -12,6 +12,9 @@ node_modules/
 .env
 .env.*
 
+# cv source document (contains personal details; the site renders from src/cv.ts)
+*.docx
+
 # os
 .DS_Store
 

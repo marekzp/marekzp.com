@@ -63,6 +63,21 @@ it; change a link there and every consumer updates.
   "file://$PWD/scripts/og-image.html"
 ```
 
+## CV
+
+`/cv/` renders from [src/cv.ts](src/cv.ts); `public/cv.pdf` is a print of that
+page. The source .docx is gitignored — it contains a phone number, which is
+deliberately excluded from `src/cv.ts` (public site + public repo). To
+re-render the PDF after editing `src/cv.ts`:
+
+```sh
+npm run build && npx astro preview --port 4322 &
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+  --disable-gpu --print-to-pdf=public/cv.pdf --no-pdf-header-footer \
+  "http://localhost:4322/cv/"
+pkill -f "astro preview"
+```
+
 ## Dependencies (each needs a reason)
 
 | Package | Reason |

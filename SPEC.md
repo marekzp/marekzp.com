@@ -71,6 +71,13 @@ Rendered Markdown. Frontmatter: `title`, `description`, `pubDate`, `updatedDate?
 placeholder title: "Why I'm writing here" (3–4 paragraphs, Marek will rewrite;
 keep it honest and short, no filler).
 
+### `/cv/` — curriculum vitae
+Rendered from structured data in `src/cv.ts` (added Jul 2026): summary,
+technologies, experience, personal projects, education, languages. Linked from
+the hub's response block alongside a downloadable `/cv.pdf` (a print-styled
+render of the same page). The phone number from the source document is
+excluded everywhere — public site, public repo.
+
 ### Plumbing routes
 - `/rss.xml` — via @astrojs/rss, full-content feed (Markdown rendered to HTML at
   build time via `markdown-it` + sanitised with `sanitize-html` — the two
