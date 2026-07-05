@@ -1,0 +1,19 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# wrangler
+.wrangler/
+
+# environment
+.env
+.env.*
+
+# os
+.DS_Store
+
+# lighthouse ci
+.lighthouseci/
