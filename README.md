@@ -96,8 +96,15 @@ the Cloudflare Web Analytics beacon, and only once its token is set.
 
 ## Launch checklist (manual, once)
 
-1. **Cloudflare**: connect this repo to Workers builds, attach the custom
-   domain `marekzp.com`, and add a 301 redirect from `www` to the apex.
+1. **Cloudflare**: connect this repo to Workers Builds — dashboard → Workers &
+   Pages → Create application → Import a repository → `marekzp/marekzp.com`,
+   project name `marekzp-com` (must match `name` in wrangler.jsonc), build
+   command `npm run build`, deploy command `npx wrangler deploy`. The custom
+   domain attaches automatically on first deploy (routes in wrangler.jsonc).
+   Then add a 301 redirect from `www` to the apex: dashboard → marekzp.com
+   zone → Rules → Redirect Rules → create a rule matching hostname
+   `www.marekzp.com` → 301 to `https://marekzp.com` preserving the path
+   (plus a proxied AAAA `www` → `100::` DNS record if none exists).
 2. **Analytics**: enable Cloudflare Web Analytics in the dashboard and paste
    the beacon token into `cloudflareAnalyticsToken` in `src/site.ts`.
 3. **Search Console**: verify the domain via DNS TXT record in Cloudflare,

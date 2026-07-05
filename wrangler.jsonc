@@ -1,9 +1,19 @@
 // Cloudflare Workers static-assets config.
 // Deploys happen via the Cloudflare git integration on push to main;
 // `npx wrangler deploy` remains available as a manual escape hatch.
+// The marekzp.com zone lives in the same account, so the custom_domain
+// route below attaches the domain (and creates its DNS record)
+// automatically on first deploy.
 {
   "name": "marekzp-com",
   "compatibility_date": "2026-07-01",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "marekzp.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist",
     "html_handling": "auto-trailing-slash",
