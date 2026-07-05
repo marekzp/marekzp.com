@@ -24,26 +24,6 @@ export const site = {
   // Paste the Cloudflare Web Analytics token here after enabling it in the
   // dashboard; the beacon script is omitted while this is empty.
   cloudflareAnalyticsToken: '',
-  externalPosts: [
-    {
-      title: 'Senior Claude reviewer is not a good use of engineering talent',
-      url: 'https://www.photoroom.com/inside-photoroom/senior-claude-reviewer-is-not-a-good-use-of-engineering-talent',
-      venue: 'Photoroom blog',
-      pubDate: new Date('2026-05-19'),
-    },
-    {
-      title: 'The laptop is the wrong place to run coding agents',
-      url: 'https://www.photoroom.com/inside-photoroom/the-laptop-is-the-wrong-place-to-run-coding-agents',
-      venue: 'Photoroom blog',
-      pubDate: new Date('2026-04-22'),
-    },
-    {
-      title: 'AI coding guardrails are mostly the old guardrails',
-      url: 'https://www.photoroom.com/inside-photoroom/ai-coding-guardrails-are-mostly-the-old-guardrails',
-      venue: 'Photoroom blog',
-      pubDate: new Date('2026-03-26'),
-    },
-  ],
   projects: [
     {
       name: 'Savin Hood',

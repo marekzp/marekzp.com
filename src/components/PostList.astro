@@ -5,7 +5,7 @@ export interface Item {
   title: string;
   href: string;
   date: Date;
-  external?: string;
+  note?: string;
   description?: string;
 }
 
@@ -24,9 +24,9 @@ const { items } = Astro.props;
         <div>
           <a href={item.href}>
             {item.title}
-            {item.external && ' ↗'}
+            {item.href.startsWith('http') && ' ↗'}
           </a>
-          {item.external && <span class="meta"> — {item.external}</span>}
+          {item.note && <span class="meta"> — {item.note}</span>}
           {item.description && <p class="description">{item.description}</p>}
         </div>
       </li>

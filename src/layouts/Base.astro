@@ -8,10 +8,11 @@ interface Props {
   description: string;
   ogType?: 'website' | 'article';
   schema?: Record<string, unknown>;
+  canonicalUrl?: string;
 }
 
-const { title, description, ogType = 'website', schema } = Astro.props;
-const canonical = new URL(Astro.url.pathname, site.url);
+const { title, description, ogType = 'website', schema, canonicalUrl } = Astro.props;
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, site.url);
 const ogImage = new URL('/og-image.png', site.url);
 const year = new Date().getFullYear();
 ---

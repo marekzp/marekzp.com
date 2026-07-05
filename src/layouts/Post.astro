@@ -9,14 +9,14 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, pubDate, updatedDate } = post.data;
+const { title, description, pubDate, updatedDate, original } = post.data;
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: title,
   description,
-  url: `${site.url}/blog/${post.id}/`,
+  url: original?.url ?? `${site.url}/blog/${post.id}/`,
   datePublished: isoDate(pubDate),
   ...(updatedDate && { dateModified: isoDate(updatedDate) }),
   author: {
@@ -27,7 +27,13 @@ const schema = {
 };
 ---
 
-<Base title={`${title} — ${site.name}`} description={description} ogType="article" schema={schema}>
+<Base
+  title={`${title} — ${site.name}`}
+  description={description}
+  ogType="article"
+  schema={schema}
+  canonicalUrl={original?.url}
+>
   <article>
     <header>
       <h1>{title}</h1>
@@ -42,6 +48,13 @@ const schema = {
           )
         }
       </p>
+      {
+        original && (
+          <p class="meta">
+            Originally published on the <a href={original.url}>{original.venue} ↗</a>
+          </p>
+        )
+      }
     </header>
     <div class="prose">
       <slot />

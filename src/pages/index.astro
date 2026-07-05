@@ -7,19 +7,14 @@ import { site } from '../site';
 
 const localPosts = await getCollection('blog', ({ data }) => !data.draft);
 
-const writing: Item[] = [
-  ...localPosts.map((post) => ({
+const writing: Item[] = localPosts
+  .map((post) => ({
     title: post.data.title,
     href: `/blog/${post.id}/`,
     date: post.data.pubDate,
-  })),
-  ...site.externalPosts.map((post) => ({
-    title: post.title,
-    href: post.url,
-    date: post.pubDate,
-    external: post.venue,
-  })),
-].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+    note: post.data.original && `originally on the ${post.data.original.venue}`,
+  }))
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
 const schema = {
   '@context': 'https://schema.org',
