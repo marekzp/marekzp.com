@@ -1,0 +1,67 @@
+---
+import { formatDate, isoDate } from '../dates';
+
+export interface Item {
+  title: string;
+  href: string;
+  date: Date;
+  external?: string;
+  description?: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="post-list">
+  {
+    items.map((item) => (
+      <li>
+        <time datetime={isoDate(item.date)}>{formatDate(item.date)}</time>
+        <div>
+          <a href={item.href}>
+            {item.title}
+            {item.external && ' ↗'}
+          </a>
+          {item.external && <span class="meta"> — {item.external}</span>}
+          {item.description && <p class="description">{item.description}</p>}
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .post-list li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--space-2xs) var(--space-s);
+  }
+
+  .post-list time {
+    padding-block-start: 0.2em;
+  }
+
+  .description {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    margin-block-start: var(--space-2xs);
+  }
+
+  @media (max-width: 480px) {
+    .post-list li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

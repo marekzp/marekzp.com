@@ -1,0 +1,140 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { site } from '../site';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: 'website' | 'article';
+  schema?: Record<string, unknown>;
+}
+
+const { title, description, ogType = 'website', schema } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url);
+const ogImage = new URL('/og-image.png', site.url);
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.name}
+      href={new URL('/rss.xml', site.url)}
+    />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-sans-latin-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
+    <!-- Google Search Console fallback: primary verification is a DNS TXT
+         record in Cloudflare. Uncomment and fill only if that's unavailable.
+    <meta name="google-site-verification" content="" /> -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header>
+      <nav aria-label="Site">
+        <a class="wordmark" href="/">{site.handle}.com</a>
+        <div class="nav-links">
+          <a href="/blog/">Blog</a>
+          <a href="/rss.xml">RSS</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer>
+      <ul class="elsewhere">
+        <li><a href={site.profiles.github}>GitHub ↗</a></li>
+        <li><a href={site.profiles.linkedin}>LinkedIn ↗</a></li>
+        <li><a href={site.profiles.substack}>Substack ↗</a></li>
+        <li><a href={`mailto:${site.email}`}>Email</a></li>
+      </ul>
+      <p class="meta">© {year} {site.name}</p>
+    </footer>
+    {
+      site.cloudflareAnalyticsToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${site.cloudflareAnalyticsToken}"}`}
+        />
+      )
+    }
+  </body>
+</html>
+
+<style>
+  header {
+    padding-block: var(--space-l);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-m);
+  }
+
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .wordmark:hover {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-l);
+    font-size: var(--step--1);
+  }
+
+  footer {
+    border-block-start: 1px solid var(--border);
+    padding-block: var(--space-l);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-m);
+    flex-wrap: wrap;
+  }
+
+  .elsewhere {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+    font-size: var(--step--1);
+  }
+</style>
