@@ -60,10 +60,10 @@ Rationale: the site is small, the design is bespoke, and tokens-as-custom-
 properties keep the design system inspectable in devtools and portable to any
 future stack. Rules:
 
-- `tokens.css` defines all raw values: colors (light + dark via
+- `tokens.css` defines all raw values: colours (light + dark via
   `prefers-color-scheme`), type scale, spacing scale, radii, transitions.
   Components reference tokens only — a raw hex or px in a component file is a bug.
-- Core color tokens (from SPEC's decided palette):
+- Core colour tokens (from SPEC's decided palette):
 
   ```css
   :root {
