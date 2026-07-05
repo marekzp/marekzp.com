@@ -1,0 +1,50 @@
+/* Design tokens — the only place raw values live.
+   Palette: warm paper + cobalt. Any change to an accent/background pair
+   must re-verify 4.5:1 contrast in both modes. */
+
+:root {
+  /* colour — light (paper) */
+  --bg: #f1ece1;
+  --surface: #faf7ef;
+  --text: #1d1a14;
+  --text-muted: #5c564a;
+  --accent: #2144c4;
+  --accent-hover: #182f8a;
+  --border: #d9d2c2;
+
+  /* type */
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* modular scale, ratio 1.25 */
+  --step--1: 0.8rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+
+  /* spacing scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  --radius: 4px;
+  --transition: 150ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161310;
+    --surface: #201c17;
+    --text: #eae4d6;
+    --text-muted: #a39b8b;
+    --accent: #93a9ff;
+    --accent-hover: #b7c5ff;
+    --border: #3a342b;
+  }
+}
