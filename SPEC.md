@@ -161,7 +161,8 @@ signature.
   shadows grid. Whitespace and hierarchy instead.
 - Quality floor: responsive to 320px, visible focus states, `prefers-reduced-
   motion` respected, dark mode via `prefers-color-scheme` (both modes designed,
-  not auto-inverted), Lighthouse ≥95 performance/accessibility/SEO.
+  not auto-inverted) plus a header sun/moon toggle that overrides it (choice
+  stored in localStorage), Lighthouse ≥95 performance/accessibility/SEO.
 
 ## Repo hygiene & delivery
 

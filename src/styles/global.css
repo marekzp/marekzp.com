@@ -37,10 +37,6 @@
   margin: 0;
 }
 
-html {
-  color-scheme: light dark;
-}
-
 body {
   background: var(--bg);
   color: var(--text);

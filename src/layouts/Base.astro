@@ -22,6 +22,10 @@ const year = new Date().getFullYear();
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') document.documentElement.dataset.theme = stored;
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -63,6 +67,39 @@ const year = new Date().getFullYear();
         <div class="nav-links">
           <a href="/blog/">Blog</a>
           <a href="/rss.xml">RSS</a>
+          <button class="theme-toggle" aria-label="Toggle colour scheme">
+            <svg
+              class="moon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+            </svg>
+            <svg
+              class="sun"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.3 11.3 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              ></path>
+            </svg>
+          </button>
         </div>
       </nav>
     </header>
@@ -77,6 +114,17 @@ const year = new Date().getFullYear();
       </ul>
       <p class="meta">© {year} {site.name}</p>
     </footer>
+    <script is:inline>
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        const root = document.documentElement;
+        const dark = root.dataset.theme
+          ? root.dataset.theme === 'dark'
+          : matchMedia('(prefers-color-scheme: dark)').matches;
+        const next = dark ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+    </script>
     {
       site.cloudflareAnalyticsToken && (
         <script
@@ -115,8 +163,45 @@ const year = new Date().getFullYear();
 
   .nav-links {
     display: flex;
+    align-items: center;
     gap: var(--space-l);
     font-size: var(--step--1);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    padding: var(--space-2xs);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+  }
+
+  .sun {
+    display: none;
+  }
+
+  html[data-theme='dark'] .sun {
+    display: block;
+  }
+
+  html[data-theme='dark'] .moon {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) .sun {
+      display: block;
+    }
+
+    html:not([data-theme]) .moon {
+      display: none;
+    }
   }
 
   footer {

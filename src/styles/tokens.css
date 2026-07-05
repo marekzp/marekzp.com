@@ -1,16 +1,20 @@
 /* Design tokens — the only place raw values live.
-   Palette: warm paper + cobalt. Any change to an accent/background pair
-   must re-verify 4.5:1 contrast in both modes. */
+   Palette: warm paper + cobalt. Each colour is defined once via light-dark();
+   the active scheme follows the system preference unless the header toggle
+   sets an explicit data-theme on <html>. Any change to an accent/background
+   pair must re-verify 4.5:1 contrast in both modes. */
 
 :root {
-  /* colour — light (paper) */
-  --bg: #f1ece1;
-  --surface: #faf7ef;
-  --text: #1d1a14;
-  --text-muted: #5c564a;
-  --accent: #2144c4;
-  --accent-hover: #182f8a;
-  --border: #d9d2c2;
+  color-scheme: light dark;
+
+  /* colour — light (paper) / dark */
+  --bg: light-dark(#f1ece1, #161310);
+  --surface: light-dark(#faf7ef, #201c17);
+  --text: light-dark(#1d1a14, #eae4d6);
+  --text-muted: light-dark(#5c564a, #a39b8b);
+  --accent: light-dark(#2144c4, #93a9ff);
+  --accent-hover: light-dark(#182f8a, #b7c5ff);
+  --border: light-dark(#d9d2c2, #3a342b);
 
   /* type */
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
@@ -37,14 +41,10 @@
   --transition: 150ms ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161310;
-    --surface: #201c17;
-    --text: #eae4d6;
-    --text-muted: #a39b8b;
-    --accent: #93a9ff;
-    --accent-hover: #b7c5ff;
-    --border: #3a342b;
-  }
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }

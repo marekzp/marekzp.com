@@ -128,8 +128,10 @@ Derives from SPEC's design brief; these are the concrete rules.
 - Lighthouse budgets: ≥95 performance / accessibility / SEO on `/` and one post,
   run in CI via Lighthouse CI against a locally served `astro preview` build
   (there is no preview deploy). Total transfer for `/` ≤ 150KB excluding fonts;
-  **0KB first-party JS** (the Cloudflare Web Analytics beacon is third-party and
-  explicitly excluded from this budget — it is the only script on the site).
+  **no bundled first-party JS** — the only first-party JS is the inline
+  theme-toggle snippet in the base layout (<0.5KB, added Jul 2026 at Marek's
+  request). The Cloudflare Web Analytics beacon is third-party and also
+  excluded from the budget.
 - HTML validates; exactly one `<h1>` per page; heading levels never skip.
 - Keyboard walk-through: every interactive element reachable, visible focus.
 - JSON-LD validates against schema.org (test with a validator before first
@@ -150,5 +152,7 @@ Derives from SPEC's design brief; these are the concrete rules.
 - A headless CMS. The CMS is `git`.
 - Analytics beyond the CF beacon.
 - Auto-generated OG images per post (nice later; static is fine at launch).
-- A manual dark-mode toggle. `prefers-color-scheme` only — a toggle means JS and
-  a stored preference for no real gain at this scale.
+- (Removed Jul 2026: a manual dark-mode toggle used to be on this list. Marek
+  wanted one, so the header has a sun/moon toggle — implemented with
+  `light-dark()` tokens, a `data-theme` attribute, and an inline <0.5KB
+  script. Keep it that size; no framework, no theme libraries.)
