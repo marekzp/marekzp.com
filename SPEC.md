@@ -41,9 +41,10 @@ Sections, top to bottom:
    > fallbacks, rate limiting and abuse prevention, and agentic coding pipelines
    > that ship the majority of our merged PRs. MSc Computer Science (Bath,
    > in progress). MBCS.
-2. **Writing**: list of external posts on the Photoroom blog (linked out, clearly
-   labelled "on the Photoroom blog") followed by local blog posts once they exist.
-   Photoroom posts (confirmed complete as of Jul 2026; reverse-chronological):
+2. **Writing**: one reverse-chronological list of all posts. Photoroom posts
+   are republished locally in full (see SEO section for canonical/attribution
+   mitigations), labelled "originally on the Photoroom blog" in the list and
+   attributed on the post page. Photoroom posts (confirmed complete Jul 2026):
    - "Senior Claude reviewer is not a good use of engineering talent" (19 May 2026) —
      https://www.photoroom.com/inside-photoroom/senior-claude-reviewer-is-not-a-good-use-of-engineering-talent
    - "The laptop is the wrong place to run coding agents" (22 Apr 2026) —
@@ -94,8 +95,13 @@ keep it honest and short, no filler).
   (apex, trailing slash — see Stack); Open Graph + Twitter card tags (generate a
   simple OG image, can be static).
 - Semantic HTML: one H1 per page, landmarks, descriptive link text.
-- Never republish Photoroom post content locally — link out only (duplicate
-  content + copyright).
+- Photoroom posts are republished locally in full (Marek's call, Jul 2026,
+  reversing the earlier link-out-only rule). Mitigations: every republished
+  post carries a cross-domain `rel=canonical` to the Photoroom original
+  (which concedes the ranking signal to Photoroom but avoids duplicate-content
+  penalties) plus a visible "Originally published on the Photoroom blog"
+  attribution. Known residual risks: Photoroom owns the copyright — get their
+  OK — and the local copies accrue no SEO authority of their own.
 
 ## Analytics & verification
 
@@ -180,7 +186,6 @@ signature.
 
 - No CMS, no database, no auth, no newsletter signup (Substack handles email).
 - No comments system.
-- No copying Photoroom content.
 - No multi-language.
 
 ## Decisions log (was: open items)
@@ -192,3 +197,7 @@ signature.
 3. Palette: warm paper + cobalt (see Design brief). Type: IBM Plex superfamily.
 4. Email: show marekzp@gmail.com until hello@marekzp.com routing exists.
 5. Deploys: Cloudflare git integration; CI on PRs is build-check only.
+6. Photoroom posts republished in full locally (Jul 2026), reversing the
+   original link-out-only rule, with cross-domain canonicals + attribution.
+   Risk accepted by Marek after flagging: copyright sits with Photoroom
+   (needs their OK) and canonicals concede the SEO value of those pages.
