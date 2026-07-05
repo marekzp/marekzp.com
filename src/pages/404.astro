@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site';
+---
+
+<Base
+  title={`Page not found — ${site.name}`}
+  description="This page doesn't exist. Head back to the front page."
+>
+  <h1>404</h1>
+  <p class="lede">This page doesn't exist — the link may be stale.</p>
+  <p><a href="/">Back to the front page</a> or <a href="/blog/">browse the blog</a>.</p>
+</Base>
+
+<style>
+  .lede {
+    margin-block: var(--space-m);
+  }
+</style>

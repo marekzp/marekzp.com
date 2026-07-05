@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import type { Item } from '../components/PostList.astro';
+import { site } from '../site';
+
+const localPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+const writing: Item[] = [
+  ...localPosts.map((post) => ({
+    title: post.data.title,
+    href: `/blog/${post.id}/`,
+    date: post.data.pubDate,
+  })),
+  ...site.externalPosts.map((post) => ({
+    title: post.title,
+    href: post.url,
+    date: post.pubDate,
+    external: post.venue,
+  })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  alternateName: site.handle,
+  jobTitle: site.jobTitle,
+  worksFor: {
+    '@type': 'Organization',
+    name: site.employer.name,
+    url: site.employer.url,
+  },
+  url: site.url,
+  email: `mailto:${site.email}`,
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: site.alumniOf,
+  },
+  memberOf: {
+    '@type': 'Organization',
+    name: site.memberOf,
+  },
+  sameAs: [site.profiles.linkedin, site.profiles.github, site.profiles.substack],
+};
+---
+
+<Base title={site.title} description={site.description} schema={schema}>
+  <h1>{site.name}</h1>
+
+  <dl class="response-block" aria-label="Profile metadata">
+    <div>
+      <dt>role</dt>
+      <dd>{site.jobTitle} at <a href={site.employer.url}>{site.employer.name} ↗</a></dd>
+    </div>
+    <div>
+      <dt>mail</dt>
+      <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+    </div>
+  </dl>
+
+  <p class="bio">
+    I lead the backend platform at Photoroom — Django and FastAPI serving 2,500+ requests per
+    second — and build production AI systems: LLM gateways with fallbacks, rate limiting and abuse
+    prevention, and agentic coding pipelines that ship the majority of our merged PRs. MSc Computer
+    Science (Bath, in progress). MBCS.
+  </p>
+
+  <section aria-labelledby="writing">
+    <h2 id="writing">Writing</h2>
+    <PostList items={writing} />
+  </section>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    {
+      site.projects.map((project) => (
+        <p>
+          <a href={project.url}>{project.name} ↗</a> — {project.description}
+        </p>
+      ))
+    }
+  </section>
+
+  <section aria-labelledby="elsewhere">
+    <h2 id="elsewhere">Elsewhere</h2>
+    <ul>
+      <li><a href={site.profiles.github}>GitHub ↗</a></li>
+      <li><a href={site.profiles.linkedin}>LinkedIn ↗</a></li>
+      <li><a href={site.profiles.substack}>Substack ↗</a></li>
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .response-block {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    border-block: 1px solid var(--border);
+    padding-block: var(--space-s);
+    margin-block: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .response-block div {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .response-block dt {
+    color: var(--text-muted);
+  }
+
+  .response-block dt::after {
+    content: ':';
+  }
+
+  .response-block dd {
+    margin: 0;
+  }
+
+  .bio {
+    margin-block-end: var(--space-xl);
+  }
+
+  h2 {
+    margin-block: var(--space-xl) var(--space-m);
+  }
+
+  section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  section p + p {
+    margin-block-start: var(--space-m);
+  }
+</style>
