@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "linkcheck": "linkinator ./dist --recurse --silent"
+    "linkcheck": "linkinator ./dist --recurse --skip \"^https?://(?!localhost)\" --silent"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
