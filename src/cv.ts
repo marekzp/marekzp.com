@@ -25,7 +25,7 @@ export const cv = {
       sector: 'AI & e-commerce',
       bullets: [
         "A hands-on (65% IC) role responsible for Photoroom's Django and FastAPI backend (2,500 requests per second, 10TB database), managing 4 direct reports.",
-        'Oversaw the FastAPI AI gateway, handing frontend requests to internal and external AI endpoints, including model fallbacks, rate limiting, abuse prevention, and request enrichment to ensure safe and reliable model use at scale.',
+        'Oversaw the FastAPI AI gateway, handling frontend requests to internal and external AI endpoints, including model fallbacks, rate limiting, abuse prevention, and request enrichment to ensure safe and reliable model use at scale.',
         'Expanded system monitoring (anomalies, SLOs, error rates) to improve incident detection and response times.',
         'Led the migration to Kubernetes with zero-downtime deployments (including data migrations); introduced automated deployments and a testing environment for client developers.',
         "Tech lead for the cross-platform (Android, backend, iOS, and web) redesign of the billing system to closely align users' AI usage with subscription fees.",
