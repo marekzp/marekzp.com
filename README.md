@@ -65,18 +65,12 @@ it; change a link there and every consumer updates.
 
 ## CV
 
-`/cv/` renders from [src/cv.ts](src/cv.ts); `public/cv.pdf` is a print of that
-page. The source .docx is gitignored — it contains a phone number, which is
-deliberately excluded from `src/cv.ts` (public site + public repo). To
-re-render the PDF after editing `src/cv.ts`:
-
-```sh
-npm run build && npx astro preview --port 4322 &
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
-  --disable-gpu --print-to-pdf=public/cv.pdf --no-pdf-header-footer \
-  "http://localhost:4322/cv/"
-pkill -f "astro preview"
-```
+`/cv/` renders from [src/cv.ts](src/cv.ts); `public/cv.pdf` is the PDF export
+of the CV source document. The source .docx is gitignored — it contains a
+phone number, which is deliberately excluded from `src/cv.ts` and the exported
+PDF (public site + public repo). To update the CV: export a phone-number-free
+PDF from the source document, replace `public/cv.pdf`, and update `src/cv.ts`
+to match so the `/cv/` page stays in sync.
 
 ## Dependencies (each needs a reason)
 

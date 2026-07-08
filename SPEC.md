@@ -74,9 +74,9 @@ keep it honest and short, no filler).
 ### `/cv/` — curriculum vitae
 Rendered from structured data in `src/cv.ts` (added Jul 2026): summary,
 technologies, experience, personal projects, education, languages. Linked from
-the hub's response block alongside a downloadable `/cv.pdf` (a print-styled
-render of the same page). The phone number from the source document is
-excluded everywhere — public site, public repo.
+the hub's response block alongside a downloadable `/cv.pdf` (the PDF export
+of the CV source document, kept in sync with `src/cv.ts`). The phone number
+from the source document is excluded everywhere — public site, public repo.
 
 ### Plumbing routes
 - `/rss.xml` — via @astrojs/rss, full-content feed (Markdown rendered to HTML at
