@@ -17,12 +17,12 @@ Success criteria, in order:
 
 ## Stack
 
-- **Astro** (latest), static output. No client-side JS framework unless a specific
-  component needs it (default: zero first-party JS shipped).
+- **Astro** (latest), static output. No client-side JS framework. The only
+  first-party JavaScript is two small inline scripts for the theme toggle.
 - **Deploy target: Cloudflare Workers with static assets** (not classic Pages — CF
   now recommends Workers for new projects). Use `wrangler` and provide a working
   `wrangler.jsonc`. Custom domain: `marekzp.com` (zone already in the account,
-  currently empty).
+  serving the site).
 - **Canonical host: apex** (`https://marekzp.com`). 301 `www` → apex. Astro
   `trailingSlash: 'always'`; canonical URLs include the trailing slash and must
   match the served URL exactly (no redirect hops on canonical links).
@@ -34,13 +34,11 @@ Success criteria, in order:
 
 ### `/` — the hub (single page, most important)
 Sections, top to bottom:
-1. **Intro**: Name (H1: "Marek Zaremba-Pike"), title line: "Staff Engineer,
-   Head of Backend at Photoroom" (matches LinkedIn). One-paragraph bio (placeholder below, Marek will edit):
-   > I lead the backend platform at Photoroom — Django and FastAPI serving 2,500+
-   > requests per second — and build production AI systems: LLM gateways with
-   > fallbacks, rate limiting and abuse prevention, and agentic coding pipelines
-   > that ship the majority of our merged PRs. MSc Computer Science (Bath,
-   > in progress). MBCS.
+1. **Intro**: Name (H1: "Marek Zaremba-Pike"), role line: "Engineering Lead,
+   Generative AI Platform at Photoroom", and scope line: "2,500+ requests/sec,
+   10 TB database, production generative-AI platform". The bio leads with the
+   platform work and positions agentic software development as a secondary
+   theme.
 2. **Writing**: one reverse-chronological list of all posts. Photoroom posts
    are republished locally in full (see SEO section for canonical/attribution
    mitigations), labelled "originally on the Photoroom blog" in the list and
@@ -67,16 +65,15 @@ needed until >20 posts.
 
 ### `/blog/[slug]/` — post page
 Rendered Markdown. Frontmatter: `title`, `description`, `pubDate`, `updatedDate?`,
-`tags?`, `draft?`. Include one **seed post** so the blog isn't empty at launch —
-placeholder title: "Why I'm writing here" (3–4 paragraphs, Marek will rewrite;
-keep it honest and short, no filler).
+`tags?`, `draft?`. Posts are authored as Markdown and need no template changes.
 
 ### `/cv/` — curriculum vitae
-Rendered from structured data in `src/cv.ts` (added Jul 2026): summary,
-technologies, experience, personal projects, education, languages. Linked from
-the hub's response block alongside a downloadable `/cv.pdf` (the PDF export
-of the CV source document, kept in sync with `src/cv.ts`). The phone number
-from the source document is excluded everywhere — public site, public repo.
+Rendered from structured data in `src/cv.ts`: summary, technologies,
+experience, personal projects, education, and languages. Linked from the hub's
+response block alongside a separately exported downloadable `/cv.pdf`. The PDF
+and web CV must be updated together once a source of truth is chosen. The phone
+number from the source document is excluded everywhere: public site and public
+repo.
 
 ### Plumbing routes
 - `/rss.xml` — via @astrojs/rss, full-content feed (Markdown rendered to HTML at
@@ -90,7 +87,7 @@ from the source document is excluded everywhere — public site, public repo.
 
 - **JSON-LD `Person` schema** on `/`:
   `name`, `alternateName: "marekzp"`,
-  `jobTitle: "Staff Engineer, Head of Backend"`,
+  `jobTitle: "Engineering Lead, Generative AI Platform"`,
   `worksFor: {Organization: Photoroom}`, `url: https://marekzp.com`,
   `alumniOf: {CollegeOrUniversity: University of Bath}`,
   `memberOf: {Organization: BCS, The Chartered Institute for IT}`,
@@ -125,8 +122,8 @@ from the source document is excluded everywhere — public site, public repo.
 
 Audience: engineering leaders, recruiters, and engineers who clicked through from
 LinkedIn or a Photoroom post. The page's single job: confirm in five seconds that
-this is *the* Marek Zaremba-Pike who runs backend at Photoroom, then route the
-visitor to proof (writing, code, LinkedIn).
+this is *the* Marek Zaremba-Pike who leads Photoroom's Generative AI Platform,
+then route the visitor to proof (writing, code, LinkedIn).
 
 Direction: quiet, precise, engineered — the design equivalent of a well-kept
 codebase.
@@ -167,21 +164,20 @@ signature.
 ## Repo hygiene & delivery
 
 - `README.md`: local dev (`npm run dev`), how to add a post (create one Markdown
-  file), deploy (push to `main` — see below), the manual Cloudflare dashboard
-  steps, and the launch checklist.
+  file), deploy (push to `main` — see below), and remaining manual configuration.
 - **Deploy: Cloudflare git integration.** Push to `main` → CF builds and deploys.
   `wrangler.jsonc` stays in the repo (CF's build system uses it; `wrangler deploy`
   remains available as a manual escape hatch).
-- CI: GitHub Action on PRs — build + `astro check` + link check must pass (see
-  GUIDELINES quality gates). No deploy step in the Action.
+- CI: GitHub Action on PRs and `main` runs build, `astro check`, link checking,
+  and Lighthouse CI. It does not deploy.
 - Conventional commits; small, reviewable history (this repo is itself portfolio
   evidence of his agentic workflow).
 - `.editorconfig`, `.gitignore`, committed lockfile with no churn.
 
-## Launch checklist (manual steps, in the README)
+## Remaining manual configuration (in the README)
 
-1. Connect the GitHub repo to Cloudflare Workers builds; attach custom domain
-   `marekzp.com`; add the 301 `www` → apex redirect.
+1. Configure the 301 `www` → apex redirect, redirect HTTP to HTTPS, and add
+   the planned security headers.
 2. Enable Cloudflare Web Analytics; paste the beacon token into the config.
 3. Verify domain in Google Search Console via DNS TXT record; submit the sitemap.
 4. **Point every profile back at marekzp.com** — LinkedIn website field, GitHub

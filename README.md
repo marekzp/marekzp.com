@@ -1,8 +1,9 @@
 # marekzp.com
 
-Personal site for Marek Zaremba-Pike. Astro, static output, zero first-party
-JS, deployed to Cloudflare Workers static assets. See [SPEC.md](SPEC.md) for
-what this site is for and [GUIDELINES.md](GUIDELINES.md) for how it's built.
+Personal site for Marek Zaremba-Pike. Astro, static output, two small inline
+theme scripts, deployed to Cloudflare Workers static assets. See
+[SPEC.md](SPEC.md) for what this site is for and [GUIDELINES.md](GUIDELINES.md)
+for how it's built.
 
 ## Run
 
@@ -54,11 +55,11 @@ CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" npx l
 Push to `main` — the Cloudflare git integration builds and deploys.
 `npx wrangler deploy` works as a manual escape hatch.
 
-## Site identity
+## Shared site identity
 
-All identity data — name, links, email, external posts — lives in
-[src/site.ts](src/site.ts). The hub page, JSON-LD, footer, and RSS read from
-it; change a link there and every consumer updates.
+Shared identity data such as name, links, email, employer, and role lives in
+[src/site.ts](src/site.ts). Page-specific copy lives beside its page, CV data
+lives in [src/cv.ts](src/cv.ts), and posts live in `src/content/blog/`.
 
 ## OG image
 
@@ -74,12 +75,11 @@ it; change a link there and every consumer updates.
 
 ## CV
 
-`/cv/` renders from [src/cv.ts](src/cv.ts); `public/cv.pdf` is the PDF export
-of the CV source document. The source .docx is gitignored — it contains a
-phone number, which is deliberately excluded from `src/cv.ts` and the exported
-PDF (public site + public repo). To update the CV: export a phone-number-free
-PDF from the source document, replace `public/cv.pdf`, and update `src/cv.ts`
-to match so the `/cv/` page stays in sync.
+`/cv/` renders from [src/cv.ts](src/cv.ts). `public/cv.pdf` is separately
+exported from a gitignored CV document. The source document contains a phone
+number, which is deliberately excluded from the web CV and PDF. Before the
+next CV update, choose one source of truth and update both published versions
+together.
 
 ## Dependencies (each needs a reason)
 
@@ -94,20 +94,15 @@ to match so the `/cv/` page stays in sync.
 | `linkinator` | Internal link checking in CI. |
 | `@lhci/cli` | Lighthouse budgets in CI. |
 
-Nothing here ships JavaScript to the client. The only script on the site is
-the Cloudflare Web Analytics beacon, and only once its token is set.
+The site ships no bundled application JavaScript. It has two small first-party
+inline scripts for the theme toggle. The Cloudflare Web Analytics beacon is an
+optional third-party script, included only once its token is set.
 
-## Launch checklist (manual, once)
+## Remaining manual configuration
 
-1. **Cloudflare**: connect this repo to Workers Builds — dashboard → Workers &
-   Pages → Create application → Import a repository → `marekzp/marekzp.com`,
-   project name `marekzp-com` (must match `name` in wrangler.jsonc), build
-   command `npm run build`, deploy command `npx wrangler deploy`. The custom
-   domain attaches automatically on first deploy (routes in wrangler.jsonc).
-   Then add a 301 redirect from `www` to the apex: dashboard → marekzp.com
-   zone → Rules → Redirect Rules → create a rule matching hostname
-   `www.marekzp.com` → 301 to `https://marekzp.com` preserving the path
-   (plus a proxied AAAA `www` → `100::` DNS record if none exists).
+1. **Cloudflare**: configure `www.marekzp.com` and a permanent redirect to
+   `https://marekzp.com`, preserving the path. Redirect all HTTP traffic to
+   HTTPS. Then add and verify the planned security headers.
 2. **Analytics**: enable Cloudflare Web Analytics in the dashboard and paste
    the beacon token into `cloudflareAnalyticsToken` in `src/site.ts`.
 3. **Search Console**: verify the domain via DNS TXT record in Cloudflare,

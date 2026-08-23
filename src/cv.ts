@@ -1,4 +1,5 @@
-// CV content — the /cv/ page and the generated cv.pdf render from this.
+// CV content for the /cv/ page. public/cv.pdf is exported separately from a
+// gitignored source document; choose one source of truth before the next update.
 // Deliberately excludes the phone number from the source document: this file
 // is public (site + repo). Contact is email + LinkedIn only.
 export const cv = {
