@@ -9,7 +9,6 @@ export const site = {
     name: 'Photoroom',
     url: 'https://www.photoroom.com',
   },
-  title: 'Marek Zaremba-Pike, Engineering Lead, Generative AI Platform at Photoroom',
   description:
     'Marek Zaremba-Pike leads Photoroom’s Generative AI Platform. Writing on production AI systems and agentic engineering.',
   // Swap for hello@marekzp.com once Cloudflare Email Routing is set up.

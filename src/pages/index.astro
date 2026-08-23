@@ -41,7 +41,11 @@ const schema = {
 };
 ---
 
-<Base title={site.title} description={site.description} schema={schema}>
+<Base
+  title={`${site.name}, ${site.jobTitle} at ${site.employer.name}`}
+  description={site.description}
+  schema={schema}
+>
   <h1>{site.name}</h1>
 
   <dl class="response-block" aria-label="Profile metadata">
