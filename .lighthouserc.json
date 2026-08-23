@@ -1,7 +1,11 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist"
+      "staticDistDir": "./dist",
+      "url": [
+        "/",
+        "/blog/what-are-pr-reviews-good-for-anyway/"
+      ]
     },
     "assert": {
       "assertions": {
