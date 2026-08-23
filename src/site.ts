@@ -30,5 +30,11 @@ export const site = {
       description:
         'UK income tax calculator that tracks income year-round and flags threshold cliffs before they cost you. Rust and Python/Django backend, TypeScript and Astro frontend, built end-to-end with agentic tooling.',
     },
+    {
+      name: 'zero-downtime-migrations',
+      url: 'https://github.com/Photoroom/zero-downtime-migrations',
+      description:
+        'PostgreSQL migration safety linter for Alembic, Django and Tortoise. Written in Rust, with 17 rules, and published on PyPI. Built at Photoroom.',
+    },
   ],
 } as const;
