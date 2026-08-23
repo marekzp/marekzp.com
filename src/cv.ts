@@ -2,7 +2,7 @@
 // Deliberately excludes the phone number from the source document: this file
 // is public (site + repo). Contact is email + LinkedIn only.
 export const cv = {
-  updated: 'June 2026',
+  updated: 'August 2026',
   headline: 'UK citizen',
   summary:
     'Staff engineer building and deploying production AI systems at scale. Led high-throughput backend platforms (2,500+ RPS) and designed LLM integrations with safeguards including rate limiting, fallbacks, and abuse prevention. Currently focused on building and optimising agentic coding workflows.',
