@@ -12,6 +12,7 @@ const writing: Item[] = localPosts
     title: post.data.title,
     href: `/blog/${post.id}/`,
     date: post.data.pubDate,
+    description: post.data.description,
     note: post.data.original && `originally on the ${post.data.original.venue}`,
   }))
   .sort((a, b) => b.date.valueOf() - a.date.valueOf());
