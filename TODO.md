@@ -11,7 +11,7 @@
 
 ## Reliability and security
 
-- [ ] Fix `npm run linkcheck`, which currently crashes locally even though a direct Linkinator invocation succeeds.
+- [ ] Verify `npm run linkcheck` locally and in CI after Linkinator's fixed-port workaround.
 - [ ] Make Lighthouse runnable locally, or document the required Chrome installation.
 - [ ] Add HTTPS, HSTS, Content Security Policy, `X-Content-Type-Options`, and `Referrer-Policy` response headers.
 - [ ] Replace Astro's deprecated `z` export in the content schema before a future upgrade turns the check hints into errors.

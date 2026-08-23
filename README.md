@@ -6,6 +6,8 @@ what this site is for and [GUIDELINES.md](GUIDELINES.md) for how it's built.
 
 ## Run
 
+Use Node 22.
+
 ```sh
 npm install
 npm run dev        # http://localhost:4321
@@ -39,6 +41,13 @@ npm run linkcheck  # internal link check over dist/ (external links skipped)
 CI (GitHub Actions) runs all three on every PR and push to main, plus
 Lighthouse CI against the built output with ≥95 budgets for performance,
 accessibility, and SEO.
+
+Local Lighthouse runs need Chrome or Chromium. If Lighthouse does not find the
+macOS application automatically, run:
+
+```sh
+CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" npx lhci autorun
+```
 
 ## Deploy
 

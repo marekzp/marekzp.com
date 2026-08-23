@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22 <23"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "linkcheck": "linkinator ./dist --recurse --skip \"^https?://(?!localhost)\" --silent"
+    "linkcheck": "node scripts/linkcheck.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
