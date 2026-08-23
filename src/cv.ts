@@ -19,7 +19,18 @@ export const cv = {
   ],
   experience: [
     {
-      period: 'Dec 2024 – present',
+      period: 'Aug 2026 – present',
+      role: 'Engineering Lead, Generative AI Platform',
+      company: 'Photoroom',
+      sector: 'AI & e-commerce',
+      bullets: [
+        'Designing and building the no-code, self-service platform that enables Photoroom teams to define, test, and launch best-in-class generative-AI tools.',
+        'Key projects: resilient asynchronous execution for long-running AI generations; granular model-cost attribution, analytics, and controls; and AI-safety and content-provenance infrastructure, including child-safety safeguards, C2PA Content Credentials, and imperceptible watermarking.',
+        'Manage three direct reports and lead Photoroom’s Backend Guild, setting engineering standards and best practices and promoting knowledge-sharing across all backend engineers.',
+      ],
+    },
+    {
+      period: 'Dec 2024 – Jul 2026',
       role: 'Staff Engineer, Head of Backend',
       company: 'Photoroom',
       sector: 'AI & e-commerce',
