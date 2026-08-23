@@ -69,11 +69,15 @@ const schema = {
 
   <p class="bio">
     Engineering Lead for Photoroom’s Generative AI Platform. I design and build the no-code,
-    self-service platform that enables Photoroom teams to define, test, and launch best-in-class
+    self-service platform that enables Photoroom teams to define, test, and launch production
     generative-AI tools, alongside the cost, safety, and reliability controls that make this
-    possible at scale. I also build Photoroom’s backend software-development systems, combining
-    coding agents with structured evaluation and deterministic controls, which now produce around
-    80% of our merged backend PRs.
+    possible at scale.
+  </p>
+
+  <p class="bio">
+    I also build Photoroom’s backend software-development systems, combining coding agents with
+    structured evaluation and deterministic controls. They now produce around 80% of our merged
+    backend PRs.
   </p>
 
   <section aria-labelledby="writing">
@@ -132,7 +136,11 @@ const schema = {
   }
 
   .bio {
-    margin-block-end: var(--space-xl);
+    margin: 0;
+  }
+
+  .bio + .bio {
+    margin-block: var(--space-m) var(--space-xl);
   }
 
   h2 {
