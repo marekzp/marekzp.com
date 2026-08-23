@@ -6,6 +6,7 @@ import type { Item } from '../components/PostList.astro';
 import { site } from '../site';
 
 const localPosts = await getCollection('blog', ({ data }) => !data.draft);
+const location = 'London, United Kingdom';
 
 const writing: Item[] = localPosts
   .map((post) => ({
@@ -27,6 +28,10 @@ const schema = {
     '@type': 'Organization',
     name: site.employer.name,
     url: site.employer.url,
+  },
+  homeLocation: {
+    '@type': 'Place',
+    name: location,
   },
   url: site.url,
   email: `mailto:${site.email}`,
@@ -57,6 +62,10 @@ const schema = {
     <div>
       <dt>scope</dt>
       <dd>2,500+ requests/sec · 10 TB database · production generative-AI platform</dd>
+    </div>
+    <div>
+      <dt>location</dt>
+      <dd>{location}</dd>
     </div>
     <div>
       <dt>mail</dt>
