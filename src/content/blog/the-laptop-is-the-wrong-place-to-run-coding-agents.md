@@ -2,9 +2,6 @@
 title: The laptop is the wrong place to run coding agents
 description: Once coding agents reliably ship real work in parallel, the developer laptop becomes the most dangerous place to run them. Why Photoroom is moving remote.
 pubDate: 2026-04-22
-original:
-  venue: Photoroom blog
-  url: https://www.photoroom.com/inside-photoroom/the-laptop-is-the-wrong-place-to-run-coding-agents
 ---
 
 In a [previous post](/blog/ai-coding-guardrails-are-mostly-the-old-guardrails/), I argued that AI coding guardrails are mostly the old guardrails. In this post, I look at why, as coding agents become more capable, the laptop stops being the safe or right place to run them.

@@ -2,9 +2,6 @@
 title: AI coding guardrails are mostly the old guardrails
 description: The tools are new and the pace is faster, but the safety controls that make agent-written code shippable are the same unglamorous ones backend teams rely on.
 pubDate: 2026-03-26
-original:
-  venue: Photoroom blog
-  url: https://www.photoroom.com/inside-photoroom/ai-coding-guardrails-are-mostly-the-old-guardrails
 ---
 
 We are increasingly using an `implement-ticket` style workflow where an engineer gives the coding agent a ticket, lets it work through the implementation process, and then reviews the result. That is a simplification, but only a slight one. The code is realised in a high-scale system; roughly 2.5k requests per second, around 10TB of data, and roughly 200 million users. Sloppiness is expensive. Our team is small (5 engineers), and we ship multiple times a day. So safety matters.

@@ -2,9 +2,6 @@
 title: Senior Claude reviewer is not a good use of engineering talent
 description: If engineers only review agent-generated diffs, they bear accountability with none of the agency. Ownership has to start before the coding workflow runs.
 pubDate: 2026-05-19
-original:
-  venue: Photoroom blog
-  url: https://www.photoroom.com/inside-photoroom/senior-claude-reviewer-is-not-a-good-use-of-engineering-talent
 ---
 
 An engineer on the team recently changed their job title in Slack to Senior Claude Reviewer. It is less funny than it sounds. It is too close to home. If the future of software engineering is humans staring at agent-generated diffs until their souls leave their bodies, then we will have an exodus of the most talented and experienced people leave the profession.
