@@ -103,7 +103,9 @@ Derives from SPEC's design brief; these are the concrete rules.
   code). Self-host woff2 subsets via `@font-face` with `font-display: swap` and
   preload the body face; no Google Fonts CDN (performance + EU privacy). Subset
   to latin; expect ~4 font files total (Sans 400/500/600, Mono 400). Line length
-  capped ~70ch; body ≥16px; real type scale from tokens.
+  capped at ~72 characters, expressed as `56ch`, not `70ch`: `ch` is the width
+  of `0` (0.6em in Plex Sans) while prose averages 0.448em, so `70ch` renders
+  ~90 characters. Body 20px; real type scale from tokens.
 - Signature element: one only (per SPEC). Execute it subtly or cut it.
 - Motion: at most one considered transition (e.g. link underline, theme fade).
   Everything inside `@media (prefers-reduced-motion: no-preference)`.
