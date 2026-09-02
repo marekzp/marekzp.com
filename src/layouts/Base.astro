@@ -71,7 +71,6 @@ const year = new Date().getFullYear();
         <div class="nav-links">
           <a href="/blog/" aria-current={current('/blog/')}>Blog</a>
           <a href="/cv/" aria-current={current('/cv/')}>CV</a>
-          <a href="/rss.xml">RSS</a>
           <button class="theme-toggle" aria-label="Toggle colour scheme">
             <svg
               class="moon"
@@ -112,11 +111,7 @@ const year = new Date().getFullYear();
       <slot />
     </main>
     <footer>
-      <ul class="elsewhere">
-        <li><a href={site.profiles.github}>GitHub ↗</a></li>
-        <li><a href={site.profiles.linkedin}>LinkedIn ↗</a></li>
-        <li><a href={site.profiles.substack}>Substack ↗</a></li>
-      </ul>
+      <a href="/rss.xml">RSS feed</a>
       <p class="meta">© {year} {site.name}</p>
     </footer>
     <script is:inline>
@@ -221,14 +216,6 @@ const year = new Date().getFullYear();
     justify-content: space-between;
     align-items: baseline;
     gap: var(--space-m);
-    flex-wrap: wrap;
-  }
-
-  .elsewhere {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: var(--space-l);
     flex-wrap: wrap;
     font-size: var(--step--1);
   }
