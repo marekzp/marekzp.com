@@ -81,8 +81,11 @@ h3 {
   font-weight: 600;
 }
 
+/* `ch` is the width of "0", not of an average character: in IBM Plex Sans
+   1ch is 0.6em while prose averages 0.448em, so 56ch reads as ~72
+   characters. 70ch would be ~90, well past comfortable. */
 p {
-  max-width: 70ch;
+  max-width: 56ch;
 }
 
 a {
@@ -159,7 +162,7 @@ pre {
 .prose ul,
 .prose ol {
   padding-inline-start: 1.2em;
-  max-width: 70ch;
+  max-width: 56ch;
 }
 
 .prose blockquote {
