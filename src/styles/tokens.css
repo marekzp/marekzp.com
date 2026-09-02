@@ -20,9 +20,12 @@
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  /* modular scale, ratio 1.25, anchored at 20px body */
+  /* modular scale, ratio 1.25, anchored at 20px body.
+     Body is fluid: 20px earns its measure on a 44rem column but leaves only
+     ~31 characters per line at 320px, so it scales down to 16px on phones.
+     The rem terms keep it responsive to the reader's own font-size setting. */
   --step--1: 0.8rem;
-  --step-0: 1.25rem;
+  --step-0: clamp(1rem, 0.76rem + 1.02vw, 1.25rem);
   --step-1: 1.563rem;
   --step-2: 1.953rem;
   --step-3: 2.441rem;
