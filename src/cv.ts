@@ -6,7 +6,7 @@ export const cv = {
   updated: 'August 2026',
   headline: 'UK citizen',
   summary:
-    'Engineering leader specialising in production Generative AI platforms and AI-augmented software delivery. I build self-service systems that let teams define, evaluate, and launch AI products for hundreds of millions of users, with five-nines reliability and the cost, safety, and operational controls to support them. At Photoroom, I also developed backend engineering systems where coding agents contribute to around 80% of merged backend PRs.',
+    'Engineering leader specialising in production Generative AI platforms and AI-augmented software delivery. I build self-service systems that let teams define, evaluate, and deploy AI products for millions of users, with the cost, safety, and operational controls needed for five-nines reliability. At Photoroom, I also developed backend engineering systems where coding agents contribute to around 80% of merged backend PRs.',
   technologies: [
     'Python, Django, FastAPI',
     'Kubernetes, Lambda',
@@ -21,7 +21,7 @@ export const cv = {
   experience: [
     {
       period: 'Aug 2026 – present',
-      role: 'Engineering Lead, Generative AI Platform',
+      role: 'Engineering Lead, Core Generative AI Platform',
       company: 'Photoroom',
       sector: 'AI & e-commerce',
       bullets: [
@@ -38,10 +38,10 @@ export const cv = {
       bullets: [
         "A hands-on (65% IC) role responsible for Photoroom's Django and FastAPI backend (2,500 requests per second, 10TB database), managing 4 direct reports.",
         'Oversaw the FastAPI AI gateway, handling frontend requests to internal and external AI endpoints, including model fallbacks, rate limiting, abuse prevention, and request enrichment to ensure safe and reliable model use at scale.',
+        "Tech lead for the cross-platform (Android, backend, iOS, and web) redesign of the billing system to closely align users' AI usage with subscription fees.",
         'Expanded system monitoring (anomalies, SLOs, error rates) to improve incident detection and response times.',
         'Led the migration to Kubernetes with zero-downtime deployments (including data migrations); introduced automated deployments and a testing environment for client developers.',
-        "Tech lead for the cross-platform (Android, backend, iOS, and web) redesign of the billing system to closely align users' AI usage with subscription fees.",
-        'Built an agentic coding pipeline with structured evaluation, delivering 50–90% of merged PRs per week. 80%+ of PRs received fewer than 3 change requests by using context-specific skills, reference files, and deterministic checks. Pipeline monitored (including chain-of-thought) for optimisation.',
+        'Built an agentic coding pipeline with structured evaluation, delivering 50–90% of merged PRs per week. 80%+ of PRs received fewer than 3 change requests by using context-specific skills, reference files, and deterministic checks. Used agent traces to monitor and optimise the pipeline.',
       ],
     },
     {
