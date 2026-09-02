@@ -6,7 +6,7 @@ export const cv = {
   updated: 'August 2026',
   headline: 'UK citizen',
   summary:
-    'Staff engineer building and deploying production AI systems at scale. Led high-throughput backend platforms (2,500+ RPS) and designed LLM integrations with safeguards including rate limiting, fallbacks, and abuse prevention. Currently focused on building and optimising agentic coding workflows.',
+    'Engineering leader specialising in production Generative AI platforms and AI-augmented software delivery. I build self-service systems that let teams define, evaluate, and launch AI products for hundreds of millions of users, with five-nines reliability and the cost, safety, and operational controls to support them. At Photoroom, I also developed backend engineering systems where coding agents contribute to around 80% of merged backend PRs.',
   technologies: [
     'Python, Django, FastAPI',
     'Kubernetes, Lambda',
