@@ -55,26 +55,16 @@ const schema = {
   <h1>{site.name}</h1>
 
   <dl class="response-block" aria-label="Profile metadata">
-    <div>
-      <dt>role</dt>
-      <dd>{site.jobTitle} at <a href={site.employer.url}>{site.employer.name} ↗</a></dd>
-    </div>
-    <div>
-      <dt>scope</dt>
-      <dd>2,500+ requests/sec · 10 TB database · production generative-AI platform</dd>
-    </div>
-    <div>
-      <dt>location</dt>
-      <dd>{location}</dd>
-    </div>
-    <div>
-      <dt>mail</dt>
-      <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
-    </div>
-    <div>
-      <dt>cv</dt>
-      <dd><a href="/cv/">/cv/</a> · <a href="/cv.pdf">pdf</a></dd>
-    </div>
+    <dt>role</dt>
+    <dd>{site.jobTitle} at <a href={site.employer.url}>{site.employer.name} ↗</a></dd>
+    <dt>scope</dt>
+    <dd>2,500+ requests/sec · 10 TB database · production generative-AI platform</dd>
+    <dt>location</dt>
+    <dd>{location}</dd>
+    <dt>mail</dt>
+    <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+    <dt>cv</dt>
+    <dd><a href="/cv/">/cv/</a> · <a href="/cv.pdf">pdf</a></dd>
   </dl>
 
   <p class="bio">
@@ -123,14 +113,12 @@ const schema = {
     border-block: 1px solid var(--border);
     padding-block: var(--space-s);
     margin-block: var(--space-l);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-  }
-
-  .response-block div {
-    display: flex;
-    gap: var(--space-xs);
+    /* One key column sized to the longest key, so every value starts at the
+       same x and wrapped values align under their own column. Ragged values
+       are what make this read as decoration rather than as output. */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2xs) var(--space-xs);
   }
 
   .response-block dt {
