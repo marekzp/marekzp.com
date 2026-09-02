@@ -20,13 +20,13 @@
   --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  /* modular scale, ratio 1.25 */
+  /* modular scale, ratio 1.25, anchored at 20px body */
   --step--1: 0.8rem;
-  --step-0: 1rem;
-  --step-1: 1.25rem;
-  --step-2: 1.563rem;
-  --step-3: 1.953rem;
-  --step-4: 2.441rem;
+  --step-0: 1.25rem;
+  --step-1: 1.563rem;
+  --step-2: 1.953rem;
+  --step-3: 2.441rem;
+  --step-4: 3.052rem;
 
   /* spacing scale */
   --space-2xs: 0.25rem;
