@@ -22,7 +22,7 @@ export const site = {
   memberOf: 'BCS, The Chartered Institute for IT',
   // Paste the Cloudflare Web Analytics token here after enabling it in the
   // dashboard; the beacon script is omitted while this is empty.
-  cloudflareAnalyticsToken: '',
+  cloudflareAnalyticsToken: '45ab519ff0984d2aa52a8f956edee40c',
   projects: [
     {
       name: 'Savin Hood',
