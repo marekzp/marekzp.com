@@ -12,6 +12,10 @@ interface Props {
 }
 
 const { title, description, ogType = 'website', schema, canonicalUrl } = Astro.props;
+// A nav item is current for its own page and anything beneath it, so /blog/
+// stays marked while reading a post.
+const path = Astro.url.pathname;
+const current = (href: string) => (path === href || path.startsWith(href) ? 'page' : undefined);
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, site.url);
 const ogImage = new URL('/og-image.png', site.url);
 const year = new Date().getFullYear();
@@ -65,8 +69,8 @@ const year = new Date().getFullYear();
       <nav aria-label="Site">
         <a class="wordmark" href="/">{site.handle}.com</a>
         <div class="nav-links">
-          <a href="/blog/">Blog</a>
-          <a href="/cv/">CV</a>
+          <a href="/blog/" aria-current={current('/blog/')}>Blog</a>
+          <a href="/cv/" aria-current={current('/cv/')}>CV</a>
           <a href="/rss.xml">RSS</a>
           <button class="theme-toggle" aria-label="Toggle colour scheme">
             <svg
@@ -167,6 +171,11 @@ const year = new Date().getFullYear();
     align-items: center;
     gap: var(--space-l);
     font-size: var(--step--1);
+  }
+
+  .nav-links a[aria-current='page'] {
+    color: var(--text);
+    text-decoration-thickness: 2px;
   }
 
   .theme-toggle {
