@@ -6,6 +6,7 @@
 // automatically on first deploy.
 {
   "name": "marekzp-com",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-07-01",
   "workers_dev": false,
   "routes": [
@@ -16,6 +17,8 @@
   ],
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/", "/blog*", "/cv*"],
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
