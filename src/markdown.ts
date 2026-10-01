@@ -47,7 +47,7 @@ export const cvMarkdown = () =>
   [
     frontmatter({ title: `CV — ${site.name}`, description: cv.summary, url: `${site.url}/cv/` }),
     '# Curriculum vitae',
-    `${site.name}, MBCS · ${cv.headline} · updated ${cv.updated}`,
+    `${site.name}, MBCS · ${site.email} · ${site.url} · ${cv.headline} · updated ${cv.updated}`,
     cv.summary,
     '## Technologies',
     ...cv.technologies.map((technology) => `- ${technology}`),
@@ -56,13 +56,14 @@ export const cvMarkdown = () =>
       `### ${job.role} at ${job.company} (${job.period})`,
       ...job.bullets.map((bullet) => `- ${bullet}`),
     ]),
-    '## Personal projects',
+    '## Example personal projects',
     ...cv.projects.flatMap((project) => [
-      `### ${project.name} (${project.period})`,
-      ...project.bullets.map((bullet) => `- ${bullet}`),
+      `### ${project.name}`,
+      project.description,
+      project.url,
     ]),
+    '## Recent blogs',
+    ...cv.blogs.map((blog) => `- [${blog.title}](${site.url}${blog.url})`),
     '## Education',
     ...cv.education.map((entry) => `- ${entry.course}, ${entry.institution} (${entry.period})`),
-    '## Languages',
-    cv.languages,
   ].join('\n\n');

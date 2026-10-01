@@ -69,11 +69,10 @@ Rendered Markdown. Frontmatter: `title`, `description`, `pubDate`, `updatedDate?
 
 ### `/cv/` — curriculum vitae
 Rendered from structured data in `src/cv.ts`: summary, technologies,
-experience, personal projects, education, and languages. Linked from the hub's
-response block alongside a separately exported downloadable `/cv.pdf`. The PDF
-and web CV must be updated together once a source of truth is chosen. The phone
-number from the source document is excluded everywhere: public site and public
-repo.
+experience, personal projects, recent blogs, and education. Linked from the
+hub's response block alongside a separately exported downloadable `/cv.pdf`.
+Keep the PDF and web CV aligned. The phone number from the source document is
+excluded everywhere: public site and public repo.
 
 ### Plumbing routes
 - `/rss.xml` — via @astrojs/rss, full-content feed (Markdown rendered to HTML at

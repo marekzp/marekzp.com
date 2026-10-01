@@ -1,32 +1,31 @@
-// CV content for the /cv/ page. public/cv.pdf is exported separately from a
-// gitignored source document; choose one source of truth before the next update.
-// Deliberately excludes the phone number from the source document: this file
-// is public (site + repo). Contact is email + LinkedIn only.
+// CV content for the /cv/ page. Keep aligned with public/cv.pdf.
+// The public versions omit the phone number in the source document.
 export const cv = {
-  updated: 'August 2026',
+  updated: 'September 2026',
   headline: 'UK citizen',
   summary:
-    'Engineering leader specialising in production Generative AI platforms and AI-augmented software delivery. I build self-service systems that let teams define, evaluate, and deploy AI products for millions of users, with the cost, safety, and operational controls needed for five-nines reliability. At Photoroom, I also developed backend engineering systems where coding agents contribute to around 80% of merged backend PRs.',
+    'Engineering leader specialising in production Generative AI platforms and AI-augmented software delivery. I build self-service systems that let teams define, evaluate, and deploy AI products for millions of users, with the cost, safety, and operational controls needed for five-nines reliability. I also build Photoroom’s backend agentic software-development systems, combining coding agents with structured evaluation and deterministic controls, that now produce around 80% of our merged backend PRs.',
   technologies: [
     'Python, Django, FastAPI',
     'Kubernetes, Lambda',
     'Managed projects in Angular, PHP, React, Vue.js',
-    'AWS, Google Cloud Platform, DigitalOcean, and private data centres/on-prem',
+    'AWS, Google Cloud Platform, DigitalOcean & private data centres/on-prem',
     'Microservices, event-driven architecture, data pipelines',
     'Production applications with Claude, GPT, Gemini, Black Forest Labs, and internal AI APIs',
-    'GitHub Actions, GitLab CI/CD',
+    'GitHub Actions, GitLab’s CI/CD',
     'SNS/SQS, custom message queues, AWS Step Functions',
     'DynamoDB, Elasticsearch, PostgreSQL, Redis',
+    'Datadog, Sentry, Grafana',
   ],
   experience: [
     {
-      period: 'Aug 2026 – present',
-      role: 'Engineering Lead, Core Generative AI Platform',
+      period: 'Jul 2026 – present',
+      role: 'Staff Engineer, Engineering Lead Core AI Platform',
       company: 'Photoroom',
       sector: 'AI & e-commerce',
       bullets: [
-        'Designing and building the no-code, self-service platform that enables Photoroom teams to define, test, and launch best-in-class generative-AI tools.',
-        'Key projects: resilient asynchronous execution for long-running AI generations; granular model-cost attribution, analytics, and controls; and AI-safety and content-provenance infrastructure, including child-safety safeguards, C2PA Content Credentials, and imperceptible watermarking.',
+        'Designing and building the no-code, self-service platform that enables Photoroom teams to define, test, and launch generative-AI tools.',
+        'Key projects: MCP server, enabling AI assistants to use its image-editing tools; resilient asynchronous execution for long-running AI generations; granular model-cost attribution, analytics, and controls; and AI-safety and content-provenance infrastructure, including child-safety safeguards, C2PA Content Credentials, and imperceptible watermarking.',
         'Manage three direct reports and lead Photoroom’s Backend Guild, setting engineering standards and best practices and promoting knowledge-sharing across all backend engineers.',
       ],
     },
@@ -36,12 +35,12 @@ export const cv = {
       company: 'Photoroom',
       sector: 'AI & e-commerce',
       bullets: [
-        "A hands-on (65% IC) role responsible for Photoroom's Django and FastAPI backend (2,500 requests per second, 10TB database), managing 4 direct reports.",
-        'Oversaw the FastAPI AI gateway, handling frontend requests to internal and external AI endpoints, including model fallbacks, rate limiting, abuse prevention, and request enrichment to ensure safe and reliable model use at scale.',
-        "Tech lead for the cross-platform (Android, backend, iOS, and web) redesign of the billing system to closely align users' AI usage with subscription fees.",
-        'Expanded system monitoring (anomalies, SLOs, error rates) to improve incident detection and response times.',
-        'Led the migration to Kubernetes with zero-downtime deployments (including data migrations); introduced automated deployments and a testing environment for client developers.',
-        'Built an agentic coding pipeline with structured evaluation, delivering 50–90% of merged PRs per week. 80%+ of PRs received fewer than 3 change requests by using context-specific skills, reference files, and deterministic checks. Used agent traces to monitor and optimise the pipeline.',
+        'A hands-on (65% IC) role responsible for Photoroom’s Django and FastAPI backend (2,500 requests per second, 10TB database) and managed 4 direct reports.',
+        'Oversaw FastAPI AI gateway, handling frontend requests to internal and external AI endpoints, including model fallbacks, rate limiting, abuse prevention, enriching requests, and more to ensure safe and reliable model use at scale.',
+        'Expanded our system monitoring (anomalies, SLOs, error rates) to improve incident detection and response times.',
+        'Led migration to Kubernetes, zero-downtime deployments (including data migrations), introduced automated deployments and a testing environment for client developers to use.',
+        'Tech lead for cross-platform (Android, backend, iOS, and web) redesign of our billing system to closely align users’ AI usage with the subscription fees.',
+        'Built an agentic coding pipeline with structured evaluation, delivering 70–90% of merged PRs per week. An increasing majority merged without human review thanks to reference files, and deterministic checks. Pipeline monitored (incl. chain-of-thought) for optimisation.',
       ],
     },
     {
@@ -51,9 +50,8 @@ export const cv = {
       sector: 'healthcare & finance',
       bullets: [
         'Planned, led, and worked on the refactor of the entire backend (Python/Django), reducing complexity, upgrading libraries, hardening security, and enabling new features.',
-        'Oversaw tech support and incident response; trained the team, established reporting systems, and built better monitoring and logs — reducing feature squads’ exposure from 25% of their time to less than 1%, and reducing developer churn.',
+        'Oversaw tech support and incident response; trained the team, established reporting systems and built better monitoring and logs. Resulted in reducing exposure of feature squads from 25% of their time to less than 1%, and reduced developer churn.',
         'Established and evangelised software processes, patterns, and ways of working.',
-        'Designed and developed internal tools for operations to increase their efficiency.',
       ],
     },
     {
@@ -62,9 +60,7 @@ export const cv = {
       company: 'TrackTrack',
       sector: 'legal tech',
       bullets: [
-        'Transformed the software architecture, infrastructure, team, and development processes to allow rapid growth in clients, including on-prem deployments inside client DMZs.',
-        'Oversaw the breakup of the Python/Django software into serverless microservices in a multi-cloud environment, including on-prem client infrastructure.',
-        'Led projects to increase test coverage, introduce an automated deployment pipeline, and ensure complete documentation.',
+        'Transformed the software architecture, infrastructure, team, and software development processes to allow rapid growth in clients. Some clients required on-prem deployments of our product inside their DMZ.',
       ],
     },
     {
@@ -73,9 +69,7 @@ export const cv = {
       company: 'European Public Affairs Technologies',
       sector: 'consulting',
       bullets: [
-        'Tech lead in five successfully delivered projects, guiding clients on the best architecture for their needs, budgets, and maturity levels; prepared documentation, wrote software, and performed code reviews.',
-        "Redesigned and rewrote a legal-tech start-up's previously prohibitively slow and inaccurate search engine, allowing them to launch.",
-        "Redesigned and rebuilt the data architecture and connections between a client's SAP, PIM, and e-commerce website, which allowed it to relaunch online sales.",
+        'Tech Lead in five successfully delivered projects. I guided clients on the best architecture for their needs, budgets, and maturity levels. I prepared documentation, wrote software, and performed code reviews. Notable projects included:',
       ],
     },
     {
@@ -84,56 +78,40 @@ export const cv = {
       company: 'European Public Affairs Technologies',
       sector: 'media & policy',
       bullets: [
-        "Designed a serverless, multi-cloud (GCP, AWS, and DigitalOcean) architecture for a data pipeline and UI collating social media (including Twitter's Firehose) and news media (Briefed.eu) for EU lobbyists.",
-        'Developed the full project (backend and frontend), including a central Django project, several serverless apps, and a text-analysis API delivered using Flask.',
-        'Databases included Elasticsearch, PostgreSQL, and Redis.',
+        'Built a content sharing platform for EU policymakers and a tool for lobbyists that compiled all the publicly available data on EU politicians.',
       ],
     },
   ],
   projects: [
     {
-      period: 'Nov 2025 – Jan 2026',
-      name: 'Savin Hood tax calculator',
-      bullets: [
-        'Built a UK income tax calculator — Rust and Python/Django backend, TypeScript and Astro frontend — entirely using Claude Code and Codex.',
-      ],
+      name: 'Savin Hood Tax Calculator',
+      description: 'Built a UK income tax calculator to help navigate the 100k tax trap.',
+      url: 'https://app.savinhood.com/calculator',
     },
     {
-      period: 'Jan 2015 – Jun 2016',
-      name: 'Co-founder & Product Owner, European Public Affairs Technologies',
-      bullets: [
-        'Designed a content-sharing platform (thewonk.eu) for EU policy analysis, which reached 30% of the total achievable market and was recognised by ComRes as a leading source of policy analysis for EU policymakers.',
-      ],
+      name: 'Zero Downtime Migrations',
+      description: 'PostgreSQL migration safety linter for Alembic, Django, and Tortoise.',
+      url: 'https://github.com/Photoroom/zero-downtime-migrations',
+    },
+  ],
+  blogs: [
+    { title: 'What are PR reviews good for anyway?', url: '/blog/what-are-pr-reviews-good-for-anyway/' },
+    {
+      title: 'Senior Claude reviewer is not a good use of engineering talent',
+      url: '/blog/senior-claude-reviewer-is-not-a-good-use-of-engineering-talent/',
+    },
+    {
+      title: 'The laptop is the wrong place to run coding agents',
+      url: '/blog/the-laptop-is-the-wrong-place-to-run-coding-agents/',
     },
   ],
   education: [
     { period: 'Apr 2026', course: 'AI Safety Bootcamp', institution: 'ML4Good' },
-    {
-      period: 'Sep 2024 – present',
-      course: 'MSc Computer Science',
-      institution: 'University of Bath',
-    },
-    {
-      period: 'Jun 2024 – Sep 2024',
-      course: 'AI Safety Fundamentals Alignment Course',
-      institution: 'BlueDot Impact',
-    },
+    { period: 'Sep 2024 – present', course: 'MSc Computer Science', institution: 'University of Bath' },
+    { period: 'Jun 2024 – Sep 2024', course: 'AI Safety Fundamentals Alignment Course', institution: 'BlueDot Impact' },
     { period: 'Mar 2024 – Jun 2024', course: 'AI Programming Nanodegree', institution: 'Udacity' },
-    {
-      period: 'May 2021 – Oct 2021',
-      course: 'Engineering Leadership',
-      institution: 'Cornell University',
-    },
-    {
-      period: '2010 – 2011',
-      course: 'MSc European Public Policy',
-      institution: 'University College London',
-    },
-    {
-      period: '2006 – 2010',
-      course: 'BA Russian Studies & International Relations',
-      institution: 'University of Birmingham',
-    },
+    { period: 'May 2021 – Oct 2021', course: 'Engineering Leadership', institution: 'Cornell University' },
+    { period: '2010 – 2011', course: 'MSc European Public Policy', institution: 'University College London' },
+    { period: '2006 – 2010', course: 'BA Russian Studies & International Relations', institution: 'University of Birmingham' },
   ],
-  languages: 'English (native) | Russian (fluent) | French, Polish, and Spanish (lapsed)',
 } as const;

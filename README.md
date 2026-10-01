@@ -75,11 +75,9 @@ lives in [src/cv.ts](src/cv.ts), and posts live in `src/content/blog/`.
 
 ## CV
 
-`/cv/` renders from [src/cv.ts](src/cv.ts). `public/cv.pdf` is separately
-exported from a gitignored CV document. The source document contains a phone
-number, which is deliberately excluded from the web CV and PDF. Before the
-next CV update, choose one source of truth and update both published versions
-together.
+`/cv/` renders from [src/cv.ts](src/cv.ts). `public/cv.pdf` is adapted from
+the latest CV document. Keep both versions aligned when updating the CV, and
+exclude the source document's phone number from both public versions.
 
 ## Dependencies (each needs a reason)
 

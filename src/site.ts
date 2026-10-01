@@ -4,13 +4,13 @@ export const site = {
   url: 'https://marekzp.com',
   name: 'Marek Zaremba-Pike',
   handle: 'marekzp',
-  jobTitle: 'Engineering Lead, Generative AI Platform',
+  jobTitle: 'Staff Engineer, Engineering Lead Core AI Platform',
   employer: {
     name: 'Photoroom',
     url: 'https://www.photoroom.com',
   },
   description:
-    'Marek Zaremba-Pike leads Photoroom’s Generative AI Platform. Writing on production AI systems and agentic engineering.',
+    'Marek Zaremba-Pike leads Photoroom’s Core AI Platform. Writing on production AI systems and agentic engineering.',
   // Swap for hello@marekzp.com once Cloudflare Email Routing is set up.
   email: 'marekzp@gmail.com',
   profiles: {

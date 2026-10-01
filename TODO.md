@@ -4,7 +4,7 @@
 
 - [ ] Configure `www.marekzp.com` and permanently redirect it to `https://marekzp.com`.
 - [ ] Redirect HTTP traffic to HTTPS.
-- [ ] Choose one CV source of truth, then regenerate `public/cv.pdf` and keep it aligned with `/cv/`. The web CV now says August 2026, but the downloadable PDF still shows the former role.
+- [x] Align `/cv/` and `public/cv.pdf` with the September 2026 CV, excluding the phone number from both public versions.
 - [x] Derive the homepage title from the role and employer so it cannot drift from `jobTitle`.
 - [x] Update `SPEC.md` to name the current Engineering Lead role.
 - [ ] Enable Cloudflare Web Analytics and verify the site in Google Search Console.
@@ -25,7 +25,7 @@
 
 ## Content and navigation
 
-- [ ] Revise the CV summary when the PDF is regenerated, leading with the Generative AI Platform role and positioning agentic engineering as the secondary theme.
+- [x] Revise the CV summary to lead with the AI Platform role and position agentic engineering as the secondary theme.
 - [x] Split the homepage biography into two paragraphs and remove the unsubstantiated “best-in-class” claim.
 - [x] Pass each post's description to the homepage `PostList` so the writing section demonstrates the themes of the articles.
 - [x] Add a CV link to the global navigation.

@@ -12,7 +12,8 @@ import { cv } from '../cv';
     <header>
       <h1>Curriculum vitae</h1>
       <p class="meta">
-        {site.name}, MBCS · {cv.headline} · updated {cv.updated} ·{' '}
+        {site.name}, MBCS · <a href={`mailto:${site.email}`}>{site.email}</a> ·{' '}
+        <a href={site.url}>marekzp.com</a> · {cv.headline} · updated {cv.updated} ·{' '}
         <a href="/cv.pdf">download as PDF</a>
       </p>
     </header>
@@ -46,20 +47,23 @@ import { cv } from '../cv';
     </section>
 
     <section aria-labelledby="cv-projects">
-      <h2 id="cv-projects">Personal projects</h2>
+      <h2 id="cv-projects">Example personal projects</h2>
       {
         cv.projects.map((project) => (
           <div class="entry">
-            <p class="meta">{project.period}</p>
             <h3>{project.name}</h3>
-            <ul>
-              {project.bullets.map((bullet) => (
-                <li>{bullet}</li>
-              ))}
-            </ul>
+            <p>{project.description}</p>
+            <a href={project.url}>{project.url}</a>
           </div>
         ))
       }
+    </section>
+
+    <section aria-labelledby="cv-blogs">
+      <h2 id="cv-blogs">Recent blogs</h2>
+      <ul>
+        {cv.blogs.map((blog) => <li><a href={blog.url}>{blog.title}</a></li>)}
+      </ul>
     </section>
 
     <section aria-labelledby="cv-education">
@@ -78,10 +82,6 @@ import { cv } from '../cv';
       </ul>
     </section>
 
-    <section aria-labelledby="cv-languages">
-      <h2 id="cv-languages">Languages</h2>
-      <p>{cv.languages}</p>
-    </section>
   </article>
 </Base>
 
