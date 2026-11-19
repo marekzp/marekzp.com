@@ -5,7 +5,7 @@ import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import { site } from '../site';
 
-const parser = new MarkdownIt();
+const parser = new MarkdownIt({ html: true });
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
