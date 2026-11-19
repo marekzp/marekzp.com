@@ -1,5 +1,5 @@
 ---
-title: How we made AI feature development self-service at Photoroom
+title: How we made AI feature development self-serve at Photoroom
 description: How Alex used an AI assistant to update Videoroom, test a new workflow, and release it to customers without waiting for a backend engineer.
 pubDate: 2026-11-19
 ---
@@ -38,8 +38,6 @@ He iterated over two days. After creating the final release Draft, he published 
 
 <video controls playsinline preload="metadata" width="360" style="max-width: 100%; height: auto" aria-label="Ten-second Videoroom product advert with voice-over" src="/media/videoroom/videoroom-sample.mp4"></video>
 
-[Open the clip with sound](/media/videoroom/videoroom-sample.mp4)
-
 ## Make the workflow visible
 
 When a seller supplies a voice-over script, a prompt-template Node puts their words into the audio instructions. A second Node folds those instructions into the prompt for the video model. Those Nodes work together inside the Videoroom Module. The Tool exposes the script as a field a seller can fill in.
@@ -71,6 +69,8 @@ For features built from supported capabilities, releasing the reviewed version d
 Suppose you change the voice-over instructions in Videoroom while I’m editing how it handles reference images. If we share a draft, I can publish your half-finished change along with mine. If we both edit the same instructions, one of us can overwrite the other’s work.
 
 Separate branches in Git would let us work independently and review what we wanted to merge. We decided against asking everyone who edits a Tool to manage branches and merges. We’ve focused on making it clear what’s changed in the draft before someone publishes it. For some of our more critical Tools, we also have designated owners and a review process in Slack.
+
+## Who can ship an AI feature now?
 
 At least twenty people at Photoroom have already contributed changes to AI Tools, only three are from the backend team working on this area. Since the end of July, their work has produced 4,818 recorded authoring changes, excluding automated edits. Our engineers built the capabilities and the system that runs them. Non-engineers can make the creative decisions themselves.
 
